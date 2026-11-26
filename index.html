@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookNest — Library, simplified</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#"><span class="brand-mark">B</span><span>book<span class="brand-light">nest</span></span></a>
+    <div class="side-label">MENU</div>
+    <button class="nav-item active" data-page="home">⌂ <span>Overview</span></button>
+    <button class="nav-item" data-page="catalog">▤ <span>Explore books</span></button>
+    <button class="nav-item" data-page="mybooks">▣ <span>My reservations</span><b id="reservation-count">0</b></button>
+    <div class="side-label space-top">MANAGEMENT</div>
+    <button class="nav-item" data-page="admin">⚙ <span>Library admin</span></button>
+    <div class="sidebar-bottom"><div class="avatar">AS</div><div><strong>Aman Singh</strong><small>Student account</small></div></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div><span class="eyebrow">MEDICAPS UNIVERSITY LIBRARY</span><h1 id="page-title">Good evening, Aman <span>✦</span></h1></div>
+      <div class="top-actions"><span class="date-pill" id="today"></span><div class="avatar">AS</div></div>
+    </header>
+
+    <section id="home" class="page active">
+      <div class="hero">
+        <div><span class="hero-kicker">YOUR CAMPUS LIBRARY, REIMAGINED</span><h2>Find your next<br><em>great read.</em></h2><p>Discover books, check availability and reserve your copy — all in one place.</p>
+          <button class="primary-btn" data-go="catalog">Explore catalogue <span>→</span></button>
+        </div>
+        <div class="hero-art"><div class="sun"></div><div class="book-stack"><div class="book b1">THE<br>ALCHEMIST</div><div class="book b2">ATOMIC<br>HABITS</div><div class="book b3">IKIGAI</div></div><div class="plant">✳</div></div>
+      </div>
+      <div class="stats">
+        <article class="stat-card"><span class="stat-icon">▤</span><small>BOOKS IN CATALOGUE</small><strong id="stat-books">0</strong><span class="muted">Explore the collection</span></article>
+        <article class="stat-card"><span class="stat-icon green">✓</span><small>AVAILABLE NOW</small><strong id="stat-available">0</strong><span class="muted">Ready to reserve</span></article>
+        <article class="stat-card"><span class="stat-icon gold">▣</span><small>YOUR RESERVATIONS</small><strong id="stat-reserved">0</strong><span class="muted">Books you've picked</span></article>
+      </div>
+      <div class="section-head"><div><span class="eyebrow">HANDPICKED FOR YOU</span><h2>Popular this week</h2></div><button class="text-btn" data-go="catalog">View all books →</button></div>
+      <div class="book-grid" id="featured-books"></div>
+    </section>
+
+    <section id="catalog" class="page">
+      <div class="section-head catalog-heading"><div><span class="eyebrow">THE COLLECTION</span><h2>Explore the catalogue</h2><p class="muted">Find the right book for your next study session.</p></div></div>
+      <div class="toolbar"><input id="search" type="search" placeholder="⌕  Search by title, author or subject..."><select id="category"><option value="All">All categories</option><option>Technology</option><option>Fiction</option><option>Self Help</option><option>Business</option></select><select id="availability"><option value="All">Any availability</option><option>Available</option><option>Checked Out</option></select></div>
+      <div class="book-grid" id="catalog-books"></div>
+    </section>
+
+    <section id="mybooks" class="page">
+      <div class="section-head"><div><span class="eyebrow">YOUR READING LIST</span><h2>My reservations</h2><p class="muted">Keep track of books you've reserved and waitlisted.</p></div></div>
+      <div id="my-reservations" class="reservation-list"></div>
+    </section>
+
+    <section id="admin" class="page">
+      <div class="section-head"><div><span class="eyebrow">LIBRARY MANAGEMENT</span><h2>Admin dashboard</h2><p class="muted">Manage the demo catalogue and book availability.</p></div></div>
+      <div class="admin-layout">
+        <form id="add-book" class="panel">
+          <h3>Add a new book</h3>
+          <label>Book title<input name="title" required placeholder="e.g. Clean Code"></label>
+          <label>Author<input name="author" required placeholder="e.g. Robert C. Martin"></label>
+          <label>Category<select name="category"><option>Technology</option><option>Fiction</option><option>Self Help</option><option>Business</option></select></label>
+          <label>Total copies<input name="copies" type="number" min="1" value="1" required></label>
+          <button class="primary-btn" type="submit">Add to catalogue +</button>
+        </form>
+        <div class="panel"><h3>Catalogue management</h3><div id="admin-books"></div></div>
+      </div>
+    </section>
+    <footer>BookNest <span>·</span> A Software Engineering project prototype</footer>
+  </main>
+  <div id="toast" role="status"></div>
+  <script src="js/app.js"></script>
+</body></html>
